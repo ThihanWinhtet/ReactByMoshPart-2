@@ -6,19 +6,26 @@ interface Post {
     title: string;
     body: string;
     userId: number;
-  }
+}
 
-const useData = (userId : number | undefined) =>{
+interface PostQuery{
+    page : number;
+    pageSize : number   
+}
+
+const useData = (query : PostQuery) =>{
 
     return useQuery<Post[], Error>({
-        queryKey : userId ? ['users', userId, 'posts'] : ['posts'],
+        queryKey : ['posts', query],
         queryFn : () => axios
         .get<Post[]>('https://jsonplaceholder.typicode.com/posts', {
           params : {
-              userId
+              _start : (query.page - 1) * query.pageSize,
+             _limit : query.pageSize
           }
         })
-        .then((res) => res.data)
+        .then((res) => res.data),
+        keepPreviousData : true
     });
 
     
