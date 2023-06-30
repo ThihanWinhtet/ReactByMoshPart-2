@@ -1,21 +1,21 @@
 import { useQuery } from "@tanstack/react-query";
+import APIClient from '../../services/ApiClient';
 import axios from "axios";
+import { CACHE_KEY_TODOS } from "../constants";
+
+const apiClient = new APIClient<Todo>('/todos');
 
 export interface Todo {
     id: number;
     title: string;
     userId: number;
     completed: boolean;
-  }
+}
 
 const useToDos = () =>{
-    const fetchToDos = axios
-  .get<Todo[]>('https://jsonplaceholder.typicode.com/todos')
-  .then((res) => res.data)
-
   return useQuery<Todo[], Error>({
-    queryKey : ['todos'],
-    queryFn : ()=> fetchToDos
+    queryKey : CACHE_KEY_TODOS,
+    queryFn : apiClient.getAll
   });
 
 }
