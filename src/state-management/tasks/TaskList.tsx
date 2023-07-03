@@ -1,17 +1,20 @@
-import { useContext } from 'react';
-import TaskConext from './Context/taskContext';
+import { useContext } from "react";
+import TaskConext from "./taskContext";
+import LoginContext from "../Context/loginContext";
 
-
+const TaskHook = () => useContext(LoginContext);
 
 const TaskList = () => {
-  const {tasks, dispatch} = useContext(TaskConext);
+  const { tasks, dispatch } = useContext(TaskConext);
 
   return (
     <>
       <button
         onClick={() =>
-          dispatch( {type : 'ADD', task :  { id: Date.now(), title: 'Task ' + Date.now() }}
-          )
+          dispatch({
+            type: "ADD",
+            task: { id: Date.now(), title: "Task " + Date.now() },
+          })
         }
         className="btn btn-primary my-3"
       >
@@ -26,9 +29,7 @@ const TaskList = () => {
             <span className="flex-grow-1">{task.title}</span>
             <button
               className="btn btn-outline-danger"
-              onClick={() =>
-                dispatch({type : 'DELETE', taskID : task.id})
-              }
+              onClick={() => dispatch({ type: "DELETE", taskID: task.id })}
             >
               Delete
             </button>
