@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import TaskList from "./tasks/TaskList";
-import LoginContext from "./Context/loginContext";
+import LoginContext from "./Auth/loginContext";
 
 const HomePage = () => {
   const { user } = useContext(LoginContext);

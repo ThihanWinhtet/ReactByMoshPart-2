@@ -1,11 +1,10 @@
 import { useContext } from "react";
 import TaskConext from "./taskContext";
-import LoginContext from "../Context/loginContext";
 
-const TaskHook = () => useContext(LoginContext);
+const TaskHook = () => useContext(TaskConext);
 
 const TaskList = () => {
-  const { tasks, dispatch } = useContext(TaskConext);
+  const { tasks, dispatch } = TaskHook();
 
   return (
     <>
