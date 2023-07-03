@@ -1,15 +1,15 @@
 
-interface Task {
+export interface Task {
     id: number;
     title: string;
 }
 
-interface AddTask {
+export interface AddTask {
     type : 'ADD',
     task : Task
 }
 
-interface DeleteTask {
+export interface DeleteTask {
     type : 'DELETE',
     taskID : number
 }
