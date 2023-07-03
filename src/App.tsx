@@ -5,17 +5,17 @@ import TaskConext from "./state-management/Context/taskContext";
 import NavBar from "./state-management/NavBar";
 import HomePage from "./state-management/HomePage";
 import AuthProvider from "./state-management/Provider/AuthProvider";
+import TaskProvider from "./state-management/Provider/TaskProvider";
 
 function App() {
-  let [tasks, dispatch] = useReducer(taskReducer, []);
 
   return (
     <>
       <AuthProvider>
-        <TaskConext.Provider value={{ tasks, dispatch}}>
+        <TaskProvider>
           <NavBar />
           <HomePage />
-        </TaskConext.Provider>
+        </TaskProvider>
       </AuthProvider>
     </>
   );
