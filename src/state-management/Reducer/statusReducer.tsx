@@ -1,9 +1,9 @@
 
-interface Login {
+export interface Login {
     type : 'LOGIN' ,
     userName : string
 }
-interface LogOut {
+export interface LogOut {
     type : 'LOGOUT'  
 }
 
