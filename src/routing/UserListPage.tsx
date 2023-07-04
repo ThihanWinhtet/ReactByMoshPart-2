@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 const UserListPage = () => {
   const users = [
@@ -7,6 +7,7 @@ const UserListPage = () => {
     { id: 3, name: 'Alice' },
   ];
   return (
+    <>
     <ul className="list-group">
       {users.map((user) => (
         <li className="list-group-item" key={user.id}>
@@ -15,6 +16,7 @@ const UserListPage = () => {
         </li>
       ))}
     </ul>
+    </>
   );
 };
 
